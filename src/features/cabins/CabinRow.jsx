@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import {formatCurrency} from "../../utils/helpers.js";
+import {useMutation, useQueryClient} from "@tanstack/react-query";
+import {deleteCabin} from "../../services/apiCabins.js";
 
 const TableRow = styled.div`
 	display: grid;
