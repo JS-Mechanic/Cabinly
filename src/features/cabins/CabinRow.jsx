@@ -43,7 +43,20 @@ const Discount = styled.div`
 `;
 
 export default function CabinRow({cabin}) {
-	const {name, maxCapacity, regularPrice, discount, image} = cabin;
+	const {id: cabinId, name, maxCapacity, regularPrice, discount, image} = cabin;
+
+	const queryClient = useQueryClient();
+	const {isLoading: isDeleting, mutate} = useMutation({
+		mutationFn: id => deleteCabin(id),
+		onSuccess: () => {
+			alert(`Cabin ${cabinId} successfully deleted.`);
+			queryClient.invalidateQueries({queryKey: ["cabins"]});
+		},
+		onError: error => {
+			alert(error.message);
+		},
+	});
+
 	return (
 		<TableRow role="row">
 			<Img sr={image} />
