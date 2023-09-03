@@ -6,6 +6,9 @@ import Button from "../../ui/Button";
 import FileInput from "../../ui/FileInput";
 import Textarea from "../../ui/Textarea";
 import {useForm} from "react-hook-form";
+import toast from "react-hot-toast";
+import {useMutation, useQueryClient} from "@tanstack/react-query";
+import {createCabin} from "../../services/apiCabins.js";
 
 const FormRow = styled.div`
 	display: grid;
