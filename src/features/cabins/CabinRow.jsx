@@ -3,6 +3,8 @@ import {formatCurrency} from "../../utils/helpers.js";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
 import {deleteCabin} from "../../services/apiCabins.js";
 import toast from "react-hot-toast";
+import {useState} from "react";
+import CreateCabinForm from "./CreateCabinForm.jsx";
 
 const TableRow = styled.div`
 	display: grid;
