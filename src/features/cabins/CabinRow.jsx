@@ -46,6 +46,7 @@ const Discount = styled.div`
 `;
 
 export default function CabinRow({cabin}) {
+	const [showForm, setShowForm] = useState(false);
 	const {id: cabinId, name, maxCapacity, regularPrice, discount, image} = cabin;
 
 	const queryClient = useQueryClient();
@@ -61,15 +62,21 @@ export default function CabinRow({cabin}) {
 	});
 
 	return (
-		<TableRow role="row">
-			<Img sr={image} />
-			<Cabin>{name}</Cabin>
-			<div>Fits up to {maxCapacity} guests</div>
-			<Price>{formatCurrency(regularPrice)}</Price>
-			<Discount>{formatCurrency(discount)}</Discount>
-			<button onClick={() => mutate(cabinId)} disabled={isDeleting}>
-				Delete
-			</button>
-		</TableRow>
+		<>
+			<TableRow role="row">
+				<Img src={image} />
+				<Cabin>{name}</Cabin>
+				<div>Fits up to {maxCapacity} guests</div>
+				<Price>{formatCurrency(regularPrice)}</Price>
+				<Discount>{formatCurrency(discount)}</Discount>
+				<div>
+					<button onClick={() => setShowForm(show => !show)}>Edit</button>
+					<button onClick={() => mutate(cabinId)} disabled={isDeleting}>
+						Delete
+					</button>
+				</div>
+			</TableRow>
+			{showForm && <CreateCabinForm cabinToEdit={cabin} />}
+		</>
 	);
 }
