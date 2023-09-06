@@ -57,7 +57,7 @@ function CreateCabinForm({cabinToEdit = {}}) {
 				<Input
 					type="text"
 					id="name"
-					disabled={isCreating}
+					disabled={isWorking}
 					{...register("name", {required: "This field is required"})}
 				/>
 			</FormRow>
@@ -66,7 +66,7 @@ function CreateCabinForm({cabinToEdit = {}}) {
 				<Input
 					type="number"
 					id="maxCapacity"
-					disabled={isCreating}
+					disabled={isWorking}
 					{...register("maxCapacity", {
 						required: "This field is required",
 						min: {value: 1, message: "Capacity should be at least 1"},
@@ -78,7 +78,7 @@ function CreateCabinForm({cabinToEdit = {}}) {
 				<Input
 					type="number"
 					id="regularPrice"
-					disabled={isCreating}
+					disabled={isWorking}
 					{...register("regularPrice", {required: "This field is required"})}
 				/>
 			</FormRow>
@@ -88,11 +88,11 @@ function CreateCabinForm({cabinToEdit = {}}) {
 					type="number"
 					id="discount"
 					defaultValue={0}
-					disabled={isCreating}
+					disabled={isWorking}
 					{...register("discount", {
 						required: "This field is required",
 						validate: value =>
-							value <= getValues().regularPrice || "Discount should be less than regular price",
+							+value <= getValues().regularPrice || "Discount should be less than regular price",
 					})}
 				/>
 			</FormRow>
@@ -102,7 +102,7 @@ function CreateCabinForm({cabinToEdit = {}}) {
 					type="number"
 					id="description"
 					defaultValue=""
-					disabled={isCreating}
+					disabled={isWorking}
 					{...register("description", {required: "This field is required"})}
 				/>
 			</FormRow>
@@ -110,18 +110,18 @@ function CreateCabinForm({cabinToEdit = {}}) {
 			<FormRow label="Cabin photo">
 				<FileInput
 					id="image"
-					disabled={isCreating}
+					disabled={isWorking}
 					accept="image/*"
-					{...register("image", {required: "This field is required"})}
+					{...register("image", {required: isEditSession ? false : "This field is required"})}
 				/>
 			</FormRow>
 
 			<FormRow>
 				{/* type is an HTML attribute! */}
-				<Button variation="secondary" type="reset" disabled={isCreating}>
+				<Button variation="secondary" type="reset" disabled={isWorking}>
 					Cancel
 				</Button>
-				<Button disabled={isCreating}>Add cabin</Button>
+				<Button disabled={isWorking}>{isEditSession ? "Edit cabin" : "Create new cabin"}</Button>
 			</FormRow>
 		</Form>
 	);
