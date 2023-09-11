@@ -3,7 +3,7 @@ name: Cypress Tests
 on: push
 
 jobs:
-  On-Chrome-Browser:
+  E2E-On-Chrome-Browser:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -17,7 +17,7 @@ jobs:
           start: npm run dev
           browser: chrome
 
-  On-Firefox-Browser:
+  E2E-On-Firefox-Browser:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -31,7 +31,7 @@ jobs:
           start: npm run dev
           browser: firefox
 
-  On-Electron-Browser:
+  E2E-On-Electron-Browser:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -43,3 +43,48 @@ jobs:
         with:
           build: npm run build
           start: npm run dev
+
+
+  Component-On-Chrome-Browser:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Chrome
+        uses: cypress-io/github-action@v6
+        timeout-minutes: 10
+        with:
+          build: npm run build
+          start: npm run dev
+          browser: chrome
+          component: true
+
+  Component-On-Firefox-Browser:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Firefox
+        uses: cypress-io/github-action@v6
+        timeout-minutes: 10
+        with:
+          build: npm run build
+          start: npm run dev
+          browser: firefox
+          component: true
+
+  Component-On-Electron-Browser:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Electron
+        uses: cypress-io/github-action@v6
+        timeout-minutes: 10
+        with:
+          build: npm run build
+          start: npm run dev
+          component: true
