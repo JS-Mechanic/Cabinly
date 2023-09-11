@@ -14,7 +14,7 @@ jobs:
         timeout-minutes: 10
         with:
           build: npm run build
-          start: npm run preview
+          start: npm run dev
           browser: chrome
 
   On-Firefox-Browser:
@@ -28,7 +28,7 @@ jobs:
         timeout-minutes: 10
         with:
           build: npm run build
-          start: npm run preview
+          start: npm run dev
           browser: firefox
 
   On-Electron-Browser:
@@ -42,4 +42,4 @@ jobs:
         timeout-minutes: 10
         with:
           build: npm run build
-          start: npm run preview
+          start: npm run dev
