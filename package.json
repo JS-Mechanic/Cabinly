@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "cypress-open": "npx cypress open",
+    "cypress-cli": "npx cypress cli"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.33.1",
