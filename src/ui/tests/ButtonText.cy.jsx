@@ -33,6 +33,6 @@ describe("ButtonText component", () => {
 		cy.get("button").should("have.css", "text-align", "center");
 		cy.get("button").should("have.css", "transition", "all 0.3s ease 0s");
 		cy.get("button").should("have.css", "background", "none");
-		cy.get("button").should("have.css", "border", "0px rgb(46, 52, 54)");
+		cy.get("button").should("have.css", "border", "0px rgb(0, 0, 0)");
 	});
 });
