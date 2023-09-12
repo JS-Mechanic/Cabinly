@@ -1,7 +1,7 @@
 import Button from "../Button.jsx";
 
 describe("Button component", () => {
-	it("mounts a small primary Button component ", () => {
+	it("should mounts a small primary Button component ", () => {
 		cy.mount(
 			<Button size="small" variation="primary">
 				Button
@@ -17,7 +17,7 @@ describe("Button component", () => {
 			.should("have.css", "text-align", "center");
 	});
 
-	it("mounts a medium secondary Button component ", () => {
+	it("should mounts a medium secondary Button component ", () => {
 		cy.mount(
 			<Button size="medium" variation="secondary">
 				Button
@@ -31,7 +31,7 @@ describe("Button component", () => {
 			.should("have.css", "font-weight", "500");
 	});
 
-	it("mounts a large danger Button component ", () => {
+	it("should mounts a large danger Button component ", () => {
 		cy.mount(
 			<Button size="large" variation="danger">
 				Button
