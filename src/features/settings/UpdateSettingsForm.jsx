@@ -6,19 +6,14 @@ import Spinner from "../../ui/Spinner.jsx";
 import {useUpdateSetting} from "./useUpdateSetting.js";
 
 function UpdateSettingsForm() {
-  const {
-    settings: {
-      minBookingLength,
-      maxBookingLength,
-      maxGuestsPerBooking,
-      breakfastPrice,
-    } = {},
-    isLoading,
-  } = useSettings();
-  const { mutate: updateSetting, isLoading: isUpdating } = useUpdateSetting();
+	const {
+		isLoading,
+		settings: {minBookingLength, maxBookingLength, maxGuestsPerBooking, breakfastPrice} = {},
+	} = useSettings();
 
-  // return <Spinner />;
-  if (isLoading) return <Spinner />;
+	const {isUpdating, updateSetting} = useUpdateSetting();
+
+	if (isLoading) return <Spinner />;
 
   function handleBlur(e, field) {
     const { value } = e.target;
