@@ -5,7 +5,7 @@ describe("Cabins section", async () => {
 		cy.contains("h1", "Dashboard");
 		cy.contains("span", "Cabins").click();
 		cy.contains("h1", "All cabins");
-		cy.get("#table-row").should("have.length", 5);
+		cy.get(".table-row").should("have.length", 5);
 	});
 
 	it("should toggle create-cabin-form", () => {
