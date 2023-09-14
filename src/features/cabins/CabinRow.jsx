@@ -59,7 +59,7 @@ export default function CabinRow({cabin}) {
 
 	return (
 		<>
-			<TableRow role="row">
+			<TableRow role="row" id="table-row">
 				<Img src={image} />
 				<Cabin>{name}</Cabin>
 				<div>Fits up to {maxCapacity} guests</div>
