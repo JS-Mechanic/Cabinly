@@ -44,7 +44,7 @@ function CreateCabinForm({cabinToEdit = {}}) {
 	}
 
 	return (
-		<Form onSubmit={handleSubmit(onSubmit)}>
+		<Form onSubmit={handleSubmit(onSubmit)} id="create-cabin-form">
 			<FormRow label="Cabin name" error={errors?.name?.message}>
 				<Input
 					type="text"
