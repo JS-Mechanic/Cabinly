@@ -12,8 +12,11 @@ describe("Settings section", async () => {
 		cy.visit("/");
 		cy.contains("span", "Settings").click();
 		cy.get("#min-nights").clear().type(2).blur();
+		cy.wait(500);
 		cy.get("#max-nights").clear().type(50).blur();
+		cy.wait(500);
 		cy.get("#max-guests").clear().type(5).blur();
+		cy.wait(500);
 		cy.get("#breakfast-price").clear().type(20).blur();
 
 		cy.wait(3000);
@@ -27,8 +30,11 @@ describe("Settings section", async () => {
 		cy.visit("/");
 		cy.contains("span", "Settings").click();
 		cy.get("#min-nights").clear().type(3).blur();
+		cy.wait(500);
 		cy.get("#max-nights").clear().type(90).blur();
+		cy.wait(500);
 		cy.get("#max-guests").clear().type(10).blur();
+		cy.wait(500);
 		cy.get("#breakfast-price").clear().type(15).blur();
 
 		cy.wait(3000);
