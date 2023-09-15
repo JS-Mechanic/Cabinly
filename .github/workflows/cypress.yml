@@ -17,6 +17,20 @@ jobs:
           start: npm run dev
           browser: chrome
 
+  E2E-On-Edge-Browser:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Chrome
+        uses: cypress-io/github-action@v6
+        timeout-minutes: 10
+        with:
+          build: npm run build
+          start: npm run dev
+          browser: edge
+
   E2E-On-Firefox-Browser:
     runs-on: ubuntu-latest
     steps:
@@ -58,6 +72,21 @@ jobs:
           build: npm run build
           start: npm run dev
           browser: chrome
+          component: true
+
+  Component-On-Edge-Browser:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Chrome
+        uses: cypress-io/github-action@v6
+        timeout-minutes: 10
+        with:
+          build: npm run build
+          start: npm run dev
+          browser: edge
           component: true
 
   Component-On-Firefox-Browser:
