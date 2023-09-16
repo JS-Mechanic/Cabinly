@@ -17,4 +17,14 @@ describe("Cabins section", async () => {
 		cy.contains("button", "Cancel").click();
 		cy.get("#create-cabin-form").should("not.exist");
 	});
+
+	it("should toggle create-cabin-form using X button", () => {
+		cy.visit("/");
+		cy.contains("span", "Cabins").click();
+		cy.get("#create-cabin-form").should("not.exist");
+		cy.contains("button", "Add new cabin").click();
+		cy.get("#create-cabin-form").should("be.visible");
+		cy.get("#modal-x-close").click();
+		cy.get("#create-cabin-form").should("not.exist");
+	});
 });
