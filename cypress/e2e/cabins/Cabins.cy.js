@@ -8,13 +8,13 @@ describe("Cabins section", async () => {
 		cy.get(".table-row").should("have.length", 5);
 	});
 
-	it("should toggle create-cabin-form", () => {
+	it("should toggle create-cabin-form using Cancel button", () => {
 		cy.visit("/");
 		cy.contains("span", "Cabins").click();
 		cy.get("#create-cabin-form").should("not.exist");
 		cy.contains("button", "Add new cabin").click();
 		cy.get("#create-cabin-form").should("be.visible");
-		cy.contains("button", "Add new cabin").click();
+		cy.contains("button", "Cancel").click();
 		cy.get("#create-cabin-form").should("not.exist");
 	});
 });
