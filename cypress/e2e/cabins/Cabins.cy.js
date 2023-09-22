@@ -38,6 +38,60 @@ describe("Cabins section", async () => {
 		cy.contains("button", "Create new cabin").click();
 	});
 
+	// it("should edit cabin", () => {
+	// 	cy.visit("/");
+	// 	cy.contains("span", "Cabins").click();
+	// 	cy.get(".row").contains("div", "New e2e cabin").siblings().children().children().click();
+	// 	cy.get("button").contains("span", "Edit").click({force: true});
+	// 	cy.get("#name").click().clear().type("Edited cabin");
+	// 	cy.get("#maxCapacity").click().clear().type(15);
+	// 	cy.get("#regularPrice").click().clear().type(1000);
+	// 	cy.get("#discount").click().clear().type(100);
+	// 	cy.get("#description").click().clear().type("This is a luxury edited.");
+	// 	cy.contains("button", "Edit cabin").click({force: true});
+	// });
+	// it("should check edited cabin", () => {
+	// 	cy.visit("/");
+	// 	cy.contains("span", "Cabins").click();
+	//
+	// 	cy.wait(5000)
+	// 		.get(".row")
+	// 		.contains("div", "Edited cabin")
+	// 		.siblings(".maxCapacity")
+	// 		.should("have.text", "Fits up to 15 guests");
+	//
+	// 	cy.get(".row")
+	// 		.contains("div", "Edited cabin")
+	// 		.siblings(".price")
+	// 		.should("have.text", "$1,000.00");
+	//
+	// 	cy.get(".row")
+	// 		.contains("div", "Edited cabin")
+	// 		.siblings(".discount")
+	// 		.should("have.text", "$100.00");
+	// });
+	// it("should reset edited cabin", () => {
+	// 	cy.visit("/");
+	// 	cy.contains("span", "Cabins").click();
+	// 	cy.wait(3000)
+	// 		.get(".row")
+	// 		.contains("div", "Edited cabin")
+	// 		.siblings()
+	// 		.children()
+	// 		.children()
+	// 		.click();
+	// 	cy.get("button").contains("span", "Edit").click({force: true});
+	// 	cy.get("#name").click().clear().type("New e2e cabin");
+	// 	cy.get("#maxCapacity").click().clear().type(10);
+	// 	cy.get("#regularPrice").click().clear().type(500);
+	// 	cy.get("#discount").click().clear().type(50);
+	// 	cy.get("#description")
+	// 		.click()
+	// 		.clear()
+	// 		.type("This is a luxury cabin created by cypress e2e test.");
+	// 	cy.contains("button", "Edit cabin").click();
+	// });
+
 	it("should delete edited cabin", () => {
 		cy.visit("/");
 		cy.contains("span", "Cabins").click();
