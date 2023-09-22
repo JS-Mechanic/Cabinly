@@ -53,9 +53,13 @@ export default function CabinRow({cabin}) {
 		<Table.Row>
 			<Img src={image} />
 			<Cabin>{name}</Cabin>
-			<div>Fits up to {maxCapacity} guests</div>
-			<Price>{formatCurrency(regularPrice)}</Price>
-			{discount ? <Discount>{formatCurrency(discount)}</Discount> : <span>&mdash;</span>}
+			<div className="maxCapacity">Fits up to {maxCapacity} guests</div>
+			<Price className="price">{formatCurrency(regularPrice)}</Price>
+			{discount ? (
+				<Discount className="discount">{formatCurrency(discount)}</Discount>
+			) : (
+				<span>&mdash;</span>
+			)}
 			<div>
 				<Modal>
 					<Menus.Menu>
