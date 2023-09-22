@@ -92,7 +92,7 @@ describe("Cabins section", async () => {
 	// 	cy.contains("button", "Edit cabin").click();
 	// });
 
-	it("should delete edited cabin", () => {
+	it("should delete added cabin", () => {
 		cy.visit("/");
 		cy.contains("span", "Cabins").click();
 		cy.wait(5000)
