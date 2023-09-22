@@ -28,11 +28,14 @@ describe("Cabins section", async () => {
 	it("should add new cabin", () => {
 		cy.visit("/");
 		cy.contains("span", "Cabins").click();
-		cy.get("#create-cabin-form").should("not.exist");
 		cy.contains("button", "Add new cabin").click();
-		cy.get("#create-cabin-form").should("be.visible");
-		cy.contains("button", "Cancel").click();
-		cy.get("#create-cabin-form").should("not.exist");
+		cy.get("#name").click().type("New e2e cabin");
+		cy.get("#maxCapacity").click().type(10);
+		cy.get("#regularPrice").click().type(500);
+		cy.get("#discount").click().clear().type(50);
+		cy.get("#description").click().type("This is a luxury cabin created by cypress e2e test.");
+		cy.get("#image").selectFile("src/data/cabins/cabin-008.jpg");
+		cy.contains("button", "Create new cabin").click();
 	});
 
 	it("should toggle create-cabin-form using X button", () => {
