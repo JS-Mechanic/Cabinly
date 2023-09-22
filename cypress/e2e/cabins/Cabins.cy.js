@@ -38,13 +38,22 @@ describe("Cabins section", async () => {
 		cy.contains("button", "Create new cabin").click();
 	});
 
-	it("should toggle create-cabin-form using X button", () => {
+	it("should delete edited cabin", () => {
 		cy.visit("/");
 		cy.contains("span", "Cabins").click();
-		cy.get("#create-cabin-form").should("not.exist");
-		cy.contains("button", "Add new cabin").click();
-		cy.get("#create-cabin-form").should("be.visible");
-		cy.get("#modal-x-close").click();
-		cy.get("#create-cabin-form").should("not.exist");
+		cy.wait(5000)
+			.get(".row")
+			.contains("div", "New e2e cabin")
+			.siblings()
+			.children()
+			.children()
+			.click();
+		cy.get("button").contains("span", "Delete").click({force: true});
+		cy.get("#root").siblings().children().contains("button", "Delete").click().wait(5000);
+	});
+	it("checks that cabin is successfully deleted", () => {
+		cy.visit("/");
+		cy.contains("span", "Cabins").click();
+		cy.get(".row").should("have.length", 5);
 	});
 });
