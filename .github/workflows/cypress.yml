@@ -18,6 +18,7 @@ jobs:
           browser: chrome
 
   E2E-On-Edge-Browser:
+    needs: E2E-On-Chrome-Browser
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -32,6 +33,7 @@ jobs:
           browser: edge
 
   E2E-On-Firefox-Browser:
+    needs: E2E-On-Edge-Browser
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -46,6 +48,7 @@ jobs:
           browser: firefox
 
   E2E-On-Electron-Browser:
+    needs: E2E-On-Firefox-Browser
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
