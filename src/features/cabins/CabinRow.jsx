@@ -62,7 +62,7 @@ export default function CabinRow({cabin}) {
 			)}
 			<div>
 				<Modal>
-					<Menus.Menu>
+					<Menus.Menu data-test-id={`toggle-button-${name}`}>
 						<Menus.Toggle id={cabinId} />
 
 						<Menus.List id={cabinId}>
