@@ -7,6 +7,7 @@ describe("Cabins section", async () => {
 		cy.contains("h1", "All cabins");
 		cy.get(".row").should("have.length", 8);
 	});
+
 	it("should toggle create-cabin-form using Cancel button", () => {
 		cy.visit("/");
 		cy.contains("span", "Cabins").click();
@@ -16,6 +17,7 @@ describe("Cabins section", async () => {
 		cy.contains("button", "Cancel").click();
 		cy.get("[data-test-id='create-cabin-form']").should("not.exist");
 	});
+
 	it("should toggle create-cabin-form using X button", () => {
 		cy.visit("/");
 		cy.contains("span", "Cabins").click();
@@ -25,6 +27,7 @@ describe("Cabins section", async () => {
 		cy.get("[data-test-id='modal-x-close']").click();
 		cy.get("[data-test-id='create-cabin-form']").should("not.exist");
 	});
+
 	it("should add new cabin", () => {
 		cy.visit("/");
 		cy.contains("span", "Cabins").click();
@@ -59,6 +62,7 @@ describe("Cabins section", async () => {
 				cy.get(".row").should("have.length", 9);
 			});
 	});
+
 	it("should reset edited cabin", () => {
 		cy.visit("/");
 		cy.contains("span", "Cabins").click();
@@ -79,16 +83,23 @@ describe("Cabins section", async () => {
 			});
 	});
 
-	it("should delete added cabin", () => {
+	it("should duplicate a cabin", () => {
 		cy.visit("/");
 		cy.contains("span", "Cabins").click();
-		cy.get("[data-test-id='toggle-button-New e2e cabin']").click();
-		cy.get("button").contains("span", "Delete").click({force: true});
-		cy.get("[data-test-id='confirm-delete']")
-			.click()
+		cy.get("[data-test-id='toggle-button-New e2e cabin']", {timeout: 5000}).click();
+		cy.get("button")
+			.contains("span", "Duplicate")
+			.click({force: true})
 			.then(async () => {
-				cy.get("[data-test-id='toggle-button-New e2e cabin']", {timeout: 5000}).should("not.exist");
-				cy.get(".row").should("have.length", 8);
+				cy.get("[data-test-id='toggle-button-Copy of New e2e cabin']", {timeout: 5000}).should(
+					"exist",
+				);
+				cy.get(".row").should("have.length", 10);
 			});
+	});
+
+	it("should delete cabins", () => {
+		cy.deleteACabin("New e2e cabin", 9);
+		cy.deleteACabin("Copy of New e2e cabin", 8);
 	});
 });
