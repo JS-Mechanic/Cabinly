@@ -23,3 +23,16 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add("deleteACabin", (id, count) => {
+	cy.visit("/");
+	cy.contains("span", "Cabins").click();
+	cy.get(`[data-test-id='toggle-button-${id}']`).click();
+	cy.get("button").contains("span", "Delete").click({force: true});
+	cy.get("[data-test-id='confirm-delete']")
+		.click()
+		.then(async () => {
+			cy.get(`[data-test-id='toggle-button-${id}']`, {timeout: 5000}).should("not.exist");
+			cy.get(".row").should("have.length", count);
+		});
+});
