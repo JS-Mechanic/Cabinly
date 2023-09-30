@@ -4,6 +4,7 @@ import {useSearchParams} from "react-router-dom";
 import {PAGE_SIZE} from "../../utils/constants.js";
 
 export function useBookings() {
+	const queryClient = useQueryClient();
 	const [searchParams] = useSearchParams();
 	// Filter:
 	const filterValue = searchParams.get("status");
