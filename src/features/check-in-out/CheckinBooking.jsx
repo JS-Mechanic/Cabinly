@@ -64,14 +64,32 @@ function CheckinBooking() {
 
 			<BookingDataBox booking={booking} />
 
+			{!hasBreakfast && (
+				<Box>
+					<Checkbox
+						checked={addBreakfast}
+						onChange={() => {
+							setAddBreakfast(add => !add);
+							setConfirmPaid(false);
+						}}
+						id="breakfast">
+						Want to add breakfast for {formatCurrency(optionalBreakfastPrice)}
+					</Checkbox>
+				</Box>
+			)}
+
 			<Box>
 				<Checkbox
 					id="confirm"
 					checked={confirmPaid}
 					disabled={confirmPaid || isCheckingIn}
 					onChange={() => setConfirmPaid(confirm => !confirm)}>
-					I confirm that {guests.fullName} has paid the total amount of {formatCurrency(totalPrice)}
-					.
+					I confirm that {guests.fullName} has paid the total amount of{" "}
+					{!addBreakfast
+						? formatCurrency(totalPrice)
+						: `${formatCurrency(totalPrice + optionalBreakfastPrice)} (${formatCurrency(
+								totalPrice,
+						  )} + ${formatCurrency(optionalBreakfastPrice)})`}
 				</Checkbox>
 			</Box>
 
