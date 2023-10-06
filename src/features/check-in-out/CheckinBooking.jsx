@@ -14,6 +14,7 @@ import {useEffect, useState} from "react";
 import Checkbox from "../../ui/Checkbox.jsx";
 import {formatCurrency} from "../../utils/helpers.js";
 import {useCheckin} from "./useCheckin.js";
+import {useSettings} from "../settings/useSettings.js";
 
 const Box = styled.div`
 	/* Box */
@@ -28,6 +29,7 @@ function CheckinBooking() {
 	const moveBack = useMoveBack();
 	const {booking, isLoading} = useBooking();
 	const {checkin, isCheckingIn} = useCheckin();
+	const {settings, isLoading: isLoadingSettings} = useSettings();
 
 	useEffect(() => setConfirmPaid(booking?.isPaid ?? false), [booking]);
 
