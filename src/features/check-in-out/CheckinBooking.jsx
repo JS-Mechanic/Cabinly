@@ -34,7 +34,7 @@ function CheckinBooking() {
 
 	useEffect(() => setConfirmPaid(booking?.isPaid ?? false), [booking]);
 
-	if (isLoading) return <Spinner />;
+	if (isLoading || isLoadingSettings) return <Spinner />;
 
 	const {id: bookingId, guests, totalPrice, numGuests, hasBreakfast, numNights} = booking;
 	const optionalBreakfastPrice = settings.breakfastPrice * numNights * numGuests;
