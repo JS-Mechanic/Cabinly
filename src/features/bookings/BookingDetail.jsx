@@ -29,6 +29,7 @@ function BookingDetail() {
 	const moveBack = useMoveBack();
 	const navigate = useNavigate();
 	const {checkout} = useCheckout();
+	const {deleteBooking, isDeleting} = useDeleteBooking();
 
 	if (isLoading) return <Spinner />;
 
@@ -63,6 +64,23 @@ function BookingDetail() {
 						Check out
 					</Button>
 				)}
+				<Modal>
+					<Modal.Open opens="delete">
+						<Button variation="danger">Delete</Button>
+					</Modal.Open>
+					<Modal.Window name="delete">
+						<ConfirmDelete
+							disabled={isDeleting}
+							resourceName="booking"
+							onConfirm={() => {
+								deleteBooking(booking.id, {
+									onSettled: () => {
+										navigate(-1);
+									},
+								});
+							}}></ConfirmDelete>
+					</Modal.Window>
+				</Modal>
 				<Button variation="secondary" onClick={moveBack}>
 					Back
 				</Button>
