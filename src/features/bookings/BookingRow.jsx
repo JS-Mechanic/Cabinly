@@ -55,6 +55,7 @@ function BookingRow({booking}) {
 		guests: {fullName: guestName, email},
 	} = booking;
 	const {checkout} = useCheckout();
+	const {isDeleting, deleteBooking} = useDeleteBooking();
 
 	const statusToTagName = {
 		unconfirmed: "blue",
@@ -86,32 +87,47 @@ function BookingRow({booking}) {
 
 			<Amount>{formatCurrency(totalPrice)}</Amount>
 
-			<Menus.Menu>
-				<Menus.Toggle id={bookingId} />
-				<Menus.List id={bookingId}>
-					<Menus.Button icon={<HiEye />} onClick={() => navigate(`/bookings/${bookingId}`)}>
-						See details
-					</Menus.Button>
-
-					{status === "unconfirmed" && (
-						<Menus.Button
-							icon={<HiArrowDownOnSquare />}
-							onClick={() => navigate(`/checkin/${bookingId}`)}>
-							Check in
+			<Modal>
+				<Menus.Menu>
+					<Menus.Toggle id={bookingId} />
+					<Menus.List id={bookingId}>
+						<Menus.Button icon={<HiEye />} onClick={() => navigate(`/bookings/${bookingId}`)}>
+							See details
 						</Menus.Button>
-					)}
 
-					{status === "checked-in" && (
-						<Menus.Button
-							icon={<HiArrowUpOnSquare />}
-							onClick={() => {
-								checkout(bookingId);
-							}}>
-							Check out
-						</Menus.Button>
-					)}
-				</Menus.List>
-			</Menus.Menu>
+						{status === "unconfirmed" && (
+							<Menus.Button
+								icon={<HiArrowDownOnSquare />}
+								onClick={() => navigate(`/checkin/${bookingId}`)}>
+								Check in
+							</Menus.Button>
+						)}
+
+						{status === "checked-in" && (
+							<Menus.Button
+								icon={<HiArrowUpOnSquare />}
+								onClick={() => {
+									checkout(bookingId);
+								}}>
+								Check out
+							</Menus.Button>
+						)}
+
+						<Modal.Open opens="delete">
+							<Menus.Button icon={<HiTrash />}>Delete</Menus.Button>
+						</Modal.Open>
+					</Menus.List>
+				</Menus.Menu>
+				<Modal.Window name="delete">
+					<ConfirmDelete
+						resourceName="Booking"
+						disabled={isDeleting}
+						onConfirm={() => {
+							deleteBooking(bookingId);
+						}}
+					/>
+				</Modal.Window>
+			</Modal>
 		</Table.Row>
 	);
 }
