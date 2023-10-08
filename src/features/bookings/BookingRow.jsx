@@ -10,6 +10,10 @@ import Menus from "../../ui/Menus.jsx";
 import {HiArrowDownOnSquare, HiArrowUpOnSquare, HiEye} from "react-icons/hi2";
 import {useNavigate} from "react-router-dom";
 import {useCheckout} from "../check-in-out/useCheckout.js";
+import {HiTrash} from "react-icons/hi";
+import {useDeleteBooking} from "./useDeleteBooking.js";
+import Modal from "../../ui/Modal.jsx";
+import ConfirmDelete from "../../ui/ConfirmDelete.jsx";
 
 const Cabin = styled.div`
 	font-size: 1.6rem;
