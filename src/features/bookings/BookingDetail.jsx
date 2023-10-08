@@ -14,6 +14,9 @@ import Spinner from "../../ui/Spinner.jsx";
 import {useNavigate} from "react-router-dom";
 import {HiArrowUpOnSquare} from "react-icons/hi2";
 import {useCheckout} from "../check-in-out/useCheckout.js";
+import Modal from "../../ui/Modal.jsx";
+import ConfirmDelete from "../../ui/ConfirmDelete.jsx";
+import {useDeleteBooking} from "./useDeleteBooking.js";
 
 const HeadingGroup = styled.div`
 	display: flex;
