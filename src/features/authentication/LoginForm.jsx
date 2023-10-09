@@ -11,7 +11,11 @@ function LoginForm() {
 	const [password, setPassword] = useState("12345");
 	const {login, isLoggingIn} = useLogin();
 
-  function handleSubmit() {}
+	function handleSubmit(e) {
+		e.preventDefault();
+		if (!email || !password) return;
+		login({email, password});
+	}
 
 	return (
 		<Form onSubmit={handleSubmit}>
