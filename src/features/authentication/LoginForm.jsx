@@ -13,32 +13,36 @@ function LoginForm() {
 
   function handleSubmit() {}
 
-  return (
-    <Form onSubmit={handleSubmit}>
-      <FormRowVertical label="Email address">
-        <Input
-          type="email"
-          id="email"
-          // This makes this form better for password managers
-          autoComplete="username"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </FormRowVertical>
-      <FormRowVertical label="Password">
-        <Input
-          type="password"
-          id="password"
-          autoComplete="current-password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </FormRowVertical>
-      <FormRowVertical>
-        <Button size="large">Login</Button>
-      </FormRowVertical>
-    </Form>
-  );
+	return (
+		<Form onSubmit={handleSubmit}>
+			<FormRowVertical label="Email address">
+				<Input
+					type="email"
+					id="email"
+					disabled={isLoggingIn}
+					// This makes this form better for password managers
+					autoComplete="username"
+					value={email}
+					onChange={e => setEmail(e.target.value)}
+				/>
+			</FormRowVertical>
+			<FormRowVertical label="Password">
+				<Input
+					type="password"
+					id="password"
+					disabled={isLoggingIn}
+					autoComplete="current-password"
+					value={password}
+					onChange={e => setPassword(e.target.value)}
+				/>
+			</FormRowVertical>
+			<FormRowVertical>
+				<Button size="large" disabled={isLoggingIn}>
+					{!isLoggingIn ? "Login" : <SpinnerMini />}
+				</Button>
+			</FormRowVertical>
+		</Form>
+	);
 }
 
 export default LoginForm;
