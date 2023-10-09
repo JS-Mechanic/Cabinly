@@ -89,6 +89,7 @@ function CheckinBooking() {
 						? formatCurrency(totalPrice)
 						: `${formatCurrency(totalPrice + optionalBreakfastPrice)} (${formatCurrency(
 								totalPrice,
+								// eslint-disable-next-line no-mixed-spaces-and-tabs
 						  )} + ${formatCurrency(optionalBreakfastPrice)})`}
 				</Checkbox>
 			</Box>
