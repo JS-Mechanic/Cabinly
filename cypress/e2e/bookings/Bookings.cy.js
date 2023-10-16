@@ -1,0 +1,1 @@
+describe("Bookings section", async () => {});
