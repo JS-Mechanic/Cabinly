@@ -36,4 +36,9 @@ describe("Bookings section", async () => {
 		cy.visit("/bookings?page=1");
 		cy.contains("button", "Previous").should("be.disabled");
 	});
+
+	it("checks that next button is not disabled on the first page", () => {
+		cy.visit("/bookings?page=1");
+		cy.contains("button", "Next").should("not.be.disabled");
+	});
 });
