@@ -31,4 +31,9 @@ describe("Bookings section", async () => {
 				cy.get(".row", {timeout: 10000}).should("have.lengthOf.lte", 10);
 			});
 	});
+
+	it("checks that previous button is disabled on the first page", () => {
+		cy.visit("/bookings?page=1");
+		cy.contains("button", "Previous").should("be.disabled");
+	});
 });
