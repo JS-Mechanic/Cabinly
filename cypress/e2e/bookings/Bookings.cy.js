@@ -72,4 +72,17 @@ describe("Bookings section", async () => {
 				cy.url().should("contain", "/bookings?status=checked-in");
 			});
 	});
+
+	it("should test 'unconfirmed' filter functionality", () => {
+		cy.visit("/bookings");
+		cy.contains("button", "Unconfirmed")
+			.click()
+			.then(async () => {
+				cy.get(".row")?.should("include.text", "unconfirmed");
+				cy.get(".row")?.should("not.include.text", "checked in");
+				cy.get(".row")?.should("not.include.text", "checked out");
+				cy.contains("button", "Unconfirmed").should("be.disabled");
+				cy.url().should("contain", "/bookings?status=unconfirmed");
+			});
+	});
 });
