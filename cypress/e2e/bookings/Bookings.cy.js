@@ -41,4 +41,9 @@ describe("Bookings section", async () => {
 		cy.visit("/bookings?page=1");
 		cy.contains("button", "Next").should("not.be.disabled");
 	});
+
+	it("checks that on page 1, filter is set to `All` and also is disabled", () => {
+		cy.visit("/bookings");
+		cy.contains("button", "All").should("be.disabled");
+	});
 });
