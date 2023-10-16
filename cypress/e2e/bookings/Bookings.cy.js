@@ -46,4 +46,17 @@ describe("Bookings section", async () => {
 		cy.visit("/bookings");
 		cy.contains("button", "All").should("be.disabled");
 	});
+
+	it("should test 'checked out' filter functionality", () => {
+		cy.visit("/bookings");
+		cy.contains("button", "Checked out")
+			.click()
+			.then(async () => {
+				cy.get(".row")?.should("include.text", "checked out");
+				cy.get(".row")?.should("not.include.text", "checked in");
+				cy.get(".row")?.should("not.include.text", "unconfirmed");
+				cy.contains("button", "Checked out").should("be.disabled");
+				cy.url().should("contain", "/bookings?status=checked-out");
+			});
+	});
 });
