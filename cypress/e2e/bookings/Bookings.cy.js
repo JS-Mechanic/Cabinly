@@ -20,4 +20,15 @@ describe("Bookings section", async () => {
 				cy.get(".row", {timeout: 10000}).should("have.lengthOf.lte", 10);
 			});
 	});
+
+	it("should test previous button functionality", () => {
+		cy.visit("/bookings");
+		cy.contains("button", "Next").click();
+		cy.contains("button", "Previous")
+			.click()
+			.then(async () => {
+				cy.url().should("contain", "/bookings?page=1");
+				cy.get(".row", {timeout: 10000}).should("have.lengthOf.lte", 10);
+			});
+	});
 });
