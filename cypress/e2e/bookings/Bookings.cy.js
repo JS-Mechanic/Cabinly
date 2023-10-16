@@ -10,4 +10,14 @@ describe("Bookings section", async () => {
 				cy.get(".row", {timeout: 10000}).should("have.lengthOf.lte", 10);
 			});
 	});
+
+	it("should test next button functionality", () => {
+		cy.visit("/bookings");
+		cy.contains("button", "Next")
+			.click()
+			.then(async () => {
+				cy.url().should("contain", "/bookings?page=2");
+				cy.get(".row", {timeout: 10000}).should("have.lengthOf.lte", 10);
+			});
+	});
 });
