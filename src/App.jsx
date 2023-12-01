@@ -1,21 +1,23 @@
 import {lazy, Suspense} from "react";
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
-import Dashboard from "./pages/Dashboard.jsx";
-import Bookings from "./pages/Bookings.jsx";
-import Cabins from "./pages/Cabins.jsx";
-import Users from "./pages/Users.jsx";
-import Settings from "./pages/Settings.jsx";
-import Account from "./pages/Account.jsx";
-import Login from "./pages/Login.jsx";
-import PageNotFound from "./pages/PageNotFound.jsx";
+
+const Dashboard = lazy(() => import("./pages/Dashboard.jsx"));
+const Bookings = lazy(() => import("./pages/Bookings.jsx"));
+const Cabins = lazy(() => import("./pages/Cabins.jsx"));
+const Users = lazy(() => import("./pages/Users.jsx"));
+const Settings = lazy(() => import("./pages/Settings.jsx"));
+const Account = lazy(() => import("./pages/Account.jsx"));
+const Login = lazy(() => import("./pages/Login.jsx"));
+const PageNotFound = lazy(() => import("./pages/PageNotFound.jsx"));
+const AppLayout = lazy(() => import("./ui/AppLayout.jsx"));
+const Booking = lazy(() => import("./pages/Booking.jsx"));
+const CheckIn = lazy(() => import("./pages/CheckIn.jsx"));
+const ProtectedRoute = lazy(() => import("./ui/ProtectedRoute.jsx"));
+
 import GlobalStyles from "./styles/GlobalStyles.js";
-import AppLayout from "./ui/AppLayout.jsx";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import {Toaster} from "react-hot-toast";
-import Booking from "./pages/Booking.jsx";
-import CheckIn from "./pages/CheckIn.jsx";
-import ProtectedRoute from "./ui/ProtectedRoute.jsx";
 
 const queryClient = new QueryClient({
 	defaultOptions: {
