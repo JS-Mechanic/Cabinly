@@ -11,7 +11,9 @@
     "cypress-open": "npx cypress open",
     "cypress-cli": "npx cypress cli",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "playWright-test": "npx playwright test",
+    "playWright-test-ui": "npx playwright test --ui"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.33.1",
@@ -28,6 +30,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.22.17",
+    "@playwright/test": "^1.40.1",
     "@storybook/addon-essentials": "^7.5.3",
     "@storybook/addon-interactions": "^7.5.3",
     "@storybook/addon-links": "^7.5.3",
