@@ -22,6 +22,7 @@ function SignupForm() {
 				<Input
 					type="text"
 					id="fullName"
+					disabled={isLoading}
 					{...register("fullName", {required: "This field is required"})}
 				/>
 			</FormRow>
@@ -30,6 +31,7 @@ function SignupForm() {
 				<Input
 					type="email"
 					id="email"
+					disabled={isLoading}
 					{...register("email", {
 						required: "This field is required",
 						pattern: {value: /\S+@\S+\.\S+/, message: "Please provide a valid email address"},
@@ -41,6 +43,7 @@ function SignupForm() {
 				<Input
 					type="password"
 					id="password"
+					disabled={isLoading}
 					{...register("password", {
 						required: "This field is required",
 						minLength: {value: 8, message: "Password needs a minimum of 8 characters"},
@@ -52,6 +55,7 @@ function SignupForm() {
 				<Input
 					type="password"
 					id="passwordConfirm"
+					disabled={isLoading}
 					{...register("passwordConfirm", {
 						required: "This field is required",
 						validate: value => value === getValues().password || "Passwords need to match",
@@ -61,10 +65,10 @@ function SignupForm() {
 
 			<FormRow>
 				{/* type is an HTML attribute! */}
-				<Button variation="secondary" type="reset">
+				<Button variation="secondary" type="reset" disabled={isLoading}>
 					Cancel
 				</Button>
-				<Button>Create new user</Button>
+				<Button disabled={isLoading}>Create new user</Button>
 			</FormRow>
 		</Form>
 	);
