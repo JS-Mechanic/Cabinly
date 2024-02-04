@@ -1,19 +1,24 @@
 import Button from "../../../ui/Button.jsx";
-import {options} from "./constants.js";
 
-export default {title: "Button", component: Button};
+export default {
+	title: "UI/Button",
+	component: Button,
+	tags: ["autodocs"],
+	argTypes: {variation: {control: "select"}, size: {control: "select"}},
+};
 
-export const Default = () => <Button>Button</Button>;
-export const Variations = () =>
-	options.variations.map((variant, index) => (
-		<Button key={index} variation={variant}>
-			Button
-		</Button>
-	));
+export const Default = {
+	args: {variation: "primary", size: "medium", children: "Button"},
+};
 
-export const Sizes = () =>
-	options.sizes.map((size, index) => (
-		<Button key={index} size={size}>
-			Button
-		</Button>
-	));
+export const Primary = {
+	args: {variation: "primary", size: "medium", children: "Button"},
+};
+
+export const Secondary = {
+	args: {variation: "secondary", size: "medium", children: "Button"},
+};
+
+export const Danger = {
+	args: {variation: "danger", size: "medium", children: "Button"},
+};
