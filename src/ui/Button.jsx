@@ -1,5 +1,6 @@
 import styled, {css} from "styled-components";
 import PropTypes from "prop-types";
+import {options} from "../stories/UI/Button/constants.js";
 
 const sizes = {
 	small: css`
@@ -66,13 +67,8 @@ export default function Button({variation = "primary", size = "medium", children
 	);
 }
 
-const options = {
-	variations: ["primary", "secondary", "danger"],
-	sizes: ["small", "medium", "large"],
-};
-
 Button.propTypes = {
 	variation: PropTypes.oneOf(options.variations),
 	size: PropTypes.oneOf(options.sizes),
-	children: PropTypes.string.isRequired,
+	children: PropTypes.node.isRequired,
 };
