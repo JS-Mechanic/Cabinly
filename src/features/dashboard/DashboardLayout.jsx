@@ -9,8 +9,9 @@ const StyledDashboardLayout = styled.div`
 
 export default function DashboardLayout() {
 	const {bookings, isLoading: isLoadingBookings} = useRecentBookings();
-	const {stays, confirmedStays, isLoading: isLoadingStays} = useRecentStays();
-	if (isLoadingBookings || isLoadingStays) return <Spinner />;
+	const {confirmedStays, isLoading: isLoadingStays, numDays} = useRecentStays();
+	const {cabins, isLoading: isLoadingCabins} = useCabins();
+	if (isLoadingBookings || isLoadingStays || isLoadingCabins) return <Spinner />;
 
 	return (
 		<StyledDashboardLayout>
