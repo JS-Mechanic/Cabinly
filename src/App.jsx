@@ -17,6 +17,8 @@ import Settings from "./pages/Settings.jsx";
 import Login from "./pages/Login.jsx";
 import PageNotFound from "./pages/PageNotFound.jsx";
 import Account from "./pages/Account.jsx";
+import {ErrorBoundary} from "react-error-boundary";
+import ErrorFallback from "./ui/ErrorFallback.jsx";
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -37,26 +39,28 @@ export default function App() {
 				<ReactQueryDevtools initialIsOpen={false} />
 				<GlobalStyles />
 				<BrowserRouter>
-					<Routes>
-						<Route
-							element={
-								<ProtectedRoute>
-									<AppLayout />
-								</ProtectedRoute>
-							}>
-							<Route index element={<Navigate replace to="/dashboard" />} />
-							<Route path="dashboard" element={<Dashboard />} />
-							<Route path="bookings" element={<Bookings />} />
-							<Route path="bookings/:bookingId" element={<Booking />} />
-							<Route path="checkin/:bookingId" element={<CheckIn />} />
-							<Route path="cabins" element={<Cabins />} />
-							<Route path="users" element={<Users />} />
-							<Route path="settings" element={<Settings />} />
-							<Route path="account" element={<Account />} />
-						</Route>
-						<Route path="login" element={<Login />} />
-						<Route path="*" element={<PageNotFound />} />
-					</Routes>
+					<ErrorBoundary FallbackComponent={ErrorFallback} onError={handleErrorBoundaryError}>
+						<Routes>
+							<Route
+								element={
+									<ProtectedRoute>
+										<AppLayout />
+									</ProtectedRoute>
+								}>
+								<Route index element={<Navigate replace to="/dashboard" />} />
+								<Route path="dashboard" element={<Dashboard />} />
+								<Route path="bookings" element={<Bookings />} />
+								<Route path="bookings/:bookingId" element={<Booking />} />
+								<Route path="checkin/:bookingId" element={<CheckIn />} />
+								<Route path="cabins" element={<Cabins />} />
+								<Route path="users" element={<Users />} />
+								<Route path="settings" element={<Settings />} />
+								<Route path="account" element={<Account />} />
+							</Route>
+							<Route path="login" element={<Login />} />
+							<Route path="*" element={<PageNotFound />} />
+						</Routes>
+					</ErrorBoundary>
 				</BrowserRouter>
 				<Toaster
 					position="top-center"
