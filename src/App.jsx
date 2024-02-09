@@ -26,6 +26,10 @@ const queryClient = new QueryClient({
 	},
 });
 
+function handleErrorBoundaryError() {
+	setTimeout(() => window.location.replace("/"), 3000);
+}
+
 export default function App() {
 	return (
 		<DarkModeProvider>
