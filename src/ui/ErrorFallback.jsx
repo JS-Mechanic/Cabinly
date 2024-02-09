@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import Heading from "./Heading.jsx";
+import GlobalStyles from "../styles/GlobalStyles.js";
 
 const StyledErrorFallback = styled.main`
 	height: 100vh;
@@ -30,3 +32,18 @@ const Box = styled.div`
 		color: var(--color-grey-500);
 	}
 `;
+
+export default function ErrorFallback({error}) {
+	return (
+		<>
+			<GlobalStyles />
+			<StyledErrorFallback>
+				<Box>
+					<Heading as="h1">Something went wrong</Heading>
+					<p>{error.message}</p>
+					<p>You will get back to the dashboard soon!</p>
+				</Box>
+			</StyledErrorFallback>
+		</>
+	);
+}
