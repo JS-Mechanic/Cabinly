@@ -58,9 +58,14 @@ const StyledButton = styled.button`
 	${props => variations[props.variation]}
 `;
 
-export default function Button({variation = "primary", size = "medium", children = "Button"}) {
+export default function Button({
+	variation = "primary",
+	size = "medium",
+	onClick = () => {},
+	children = "Button" || PropTypes.node,
+}) {
 	return (
-		<StyledButton variation={variation} size={size}>
+		<StyledButton variation={variation} size={size} onClick={onClick}>
 			{children}
 		</StyledButton>
 	);
