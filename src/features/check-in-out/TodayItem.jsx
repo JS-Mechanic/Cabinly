@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Tag from "../../ui/Tag.jsx";
 import {Flag} from "../../ui/Flag.jsx";
 import Button from "../../ui/Button.jsx";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import CheckoutButton from "./CheckoutButton.jsx";
 
 const StyledTodayItem = styled.li`
@@ -26,6 +26,7 @@ const Guest = styled.div`
 
 export default function TodayItem({activity}) {
 	const {id, numNights, status, guests} = activity;
+	const navigate = useNavigate();
 	return (
 		<StyledTodayItem>
 			{status === "unconfirmed" && <Tag type="green">Arriving</Tag>}
@@ -34,7 +35,7 @@ export default function TodayItem({activity}) {
 			<Guest>{guests.fullName}</Guest>
 			<div>{numNights} nights</div>
 			{status === "unconfirmed" && (
-				<Button size="small" variation="primary" as={Link} to={`/checkin/${id}`}>
+				<Button size="small" variation="primary" onClick={() => navigate(`/checkin/${id}`)}>
 					Check in
 				</Button>
 			)}
