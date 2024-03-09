@@ -36,6 +36,7 @@ function LoginForm() {
 					autoComplete="username"
 					value={email}
 					onChange={e => setEmail(e.target.value)}
+					placeholder="demo email: admin@test.com"
 				/>
 			</FormRowVertical>
 			<FormRowVertical label="Password">
@@ -46,6 +47,7 @@ function LoginForm() {
 					autoComplete="current-password"
 					value={password}
 					onChange={e => setPassword(e.target.value)}
+					placeholder="demo password: 12345"
 				/>
 			</FormRowVertical>
 			<FormRowVertical>
